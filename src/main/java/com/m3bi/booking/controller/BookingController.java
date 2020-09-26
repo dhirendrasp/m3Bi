@@ -57,8 +57,8 @@ public class BookingController {
 	 * @return
 	 */
 	@ApiOperation(value="Get booking status details of specific user.")
-	@GetMapping("/bookings/status/user/{id}")
-	public String getBookingStatusByUserId(@PathVariable("id") int userId){
+	@GetMapping("/bookings/status/user/{userid}")
+	public String getBookingStatusByUserId(@PathVariable("userid") int userId){
 		
 		Optional<Booking> booking = bookingRepository.findByUserId(userId);
 		Optional<PendingApproval> pendingApproval = pendingApprovalRepository.findByUserId(userId);
