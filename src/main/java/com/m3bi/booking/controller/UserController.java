@@ -82,20 +82,4 @@ public class UserController {
 	public List<User> getAllUsers(){
 		return userRepository.findAll();
 	}
-	
-	@ApiOperation(value="Add User")
-	@PostMapping("/users")
-	public ResponseEntity<Object> addUser(@Valid @RequestBody User user) {
-		User savedUser = userRepository.save(user);
-		
-		URI location = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(savedUser.getId()).toUri();
-		return ResponseEntity.created(location).build();
-		
-	}
-	
-	@ApiOperation(value="Delete user")
-	@DeleteMapping(value="/users/{id}")
-	public void deleteSelectedUser(@PathVariable int id) { 
-		userRepository.deleteById(id);
-	}
 }
